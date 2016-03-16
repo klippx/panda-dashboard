@@ -19,6 +19,7 @@
     "gulp": "^3.9.0",
     "lodash": "^3.10.0",
     "mozaik": "1.0.10",
+    "mozaik-ext-aws": "0.0.12-beta",
     "mozaik-ext-github": "1.0.6",
     "mozaik-ext-jenkins": "^1.0.0",
     "mozaik-ext-jira": "0.0.2",
