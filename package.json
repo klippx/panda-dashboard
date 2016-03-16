@@ -20,6 +20,7 @@
     "lodash": "^3.10.0",
     "mozaik": "1.0.10",
     "mozaik-ext-github": "1.0.6",
+    "mozaik-ext-jira": "0.0.2",
     "mozaik-ext-time": "1.0.0",
     "mozaik-ext-travis": "1.0.4",
     "mozaik-ext-weather": "1.0.0",
