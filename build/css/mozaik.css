@@ -1,0 +1,755 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,200,800|Montserrat:400,700");
+html,
+body {
+  font: normal normal 400 1.6vmin/3vmin "Raleway", sans-serif;
+  background: #1e2430;
+  color: #eedba5;
+  height: 100%;
+  width: 100%;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+#hotboard {
+  position: absolute;
+  top: 3vmin;
+  right: 3vmin;
+  bottom: 3vmin;
+  left: 3vmin;
+}
+.histogram__axis__legend {
+  font-size: 14px;
+  fill: #879db7;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.txt--success {
+  color: #4ec2b4;
+}
+.prop__key {
+  color: #eedba5;
+}
+.prop__value {
+  color: #f6ecd0;
+}
+.dashboard {
+  height: 100%;
+  width: 100%;
+}
+.dashboard__wrapper {
+  height: 100%;
+  width: 100%;
+}
+.dashboard__timeline {
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  top: -8px;
+  left: 0;
+  padding: 0 2vmin/2;
+}
+.dashboard__timeline__progress {
+  height: 100%;
+  width: 100%;
+  background-color: #e0c671;
+}
+.dashboard__sheet {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  padding: 20px;
+  -webkit-transition: all 800ms; /* Saf3.2+, Chrome */
+  -moz-transition: all 800ms; /* FF4+ */
+  -ms-transition: all 800ms;
+  -o-transition: all 800ms; /* Opera 10.5+ */
+  transition: all 800ms;
+  z-index: 1;
+}
+.dashboard__sheet._is-current {
+  left: 0;
+  z-index: 2;
+  opacity: 1;
+}
+.widget {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #2b3847;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.35);
+  border: none;
+}
+.widget__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1vmin;
+}
+.widget__header {
+  position: relative;
+  overflow: hidden;
+  font: normal normal 400 1.6vmin "Montserrat", sans-serif;
+  height: 6vmin;
+  line-height: 6vmin;
+  border-radius: 2px 2px 0 0;
+  padding: 0 2vmin;
+  background-color: #323f53;
+  color: #eedba5;
+  border-bottom: 1px solid #253246;
+  box-shadow: 0 1px 0 #495b71 inset;
+  white-space: pre;
+}
+.widget__header__count {
+  display: inline-block;
+  background-color: #1e2836;
+  color: #7e9ebc;
+  line-height: 1em;
+  border-radius: 2px;
+  padding: 0.8vmin 1vmin;
+  vertical-align: middle;
+  margin-left: 1.2vmin;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.5) inset;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+  border: none;
+}
+.widget__header .fa {
+  font-size: 3vmin;
+  position: absolute;
+  top: 1.5vmin;
+  right: 15px;
+  color: #e0c671;
+}
+.widget__body {
+  position: absolute;
+  top: 6vmin;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 0 0 2px 2px;
+  background: transparent;
+  box-shadow: none;
+}
+.widget__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.list__empty-msg {
+  text-align: center;
+  margin: 30px 15px;
+}
+.list__item {
+  padding: 1.5vmin 2vmin;
+  position: relative;
+}
+.list__item--with-status {
+  padding: 1.5vmin 2vmin 1.5vmin 4.5vmin;
+}
+.list__item--with-status:before {
+  content: " ";
+  display: block;
+  width: 1.5vmin;
+  height: 1.5vmin;
+  position: absolute;
+  top: 2.3vmin;
+  left: 2vmin;
+  border-radius: 1vmin;
+  background-color: #000;
+}
+.list__item--with-status--aborted:before {
+  background-color: #495b71;
+}
+.list__item--with-status--ok:before,
+.list__item--with-status--passed:before,
+.list__item--with-status--success:before {
+  background-color: #4ec2b4;
+}
+.list__item--with-status--warning:before {
+  background-color: #d1be65;
+}
+.list__item--with-status--critical:before,
+.list__item--with-status--failed:before,
+.list__item--with-status--failure:before {
+  background-color: #de5029;
+}
+.list__item__time {
+  font-size: 85%;
+}
+.list__item__time--inline {
+  display: inline-block;
+  margin-left: 7px;
+}
+.list--compact .list__item {
+  padding: 5px 15px;
+}
+.count {
+  display: inline-block;
+  font-size: 2.4vmin;
+  padding: 3px 7px;
+  background-color: #1e2836;
+  color: #eedba5;
+  border-radius: 2px;
+  line-height: 1em;
+  border: none;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table__row {
+  border-top: 1px solid #253246;
+}
+.table__row:first-child {
+  border-top: none;
+}
+.table__row--head:first-child {
+  border-bottom: 1px solid #253246;
+}
+.table__cell {
+  text-align: left;
+  padding: 1.5vmin 2vmin;
+}
+.treemap {
+  position: relative;
+}
+.treemap__chunk {
+  text-align: center;
+  overflow: hidden;
+  position: absolute;
+  color: #1e2430;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+}
+.treemap__chunk__inner {
+  width: 100%;
+  height: 100%;
+}
+.treemap .count {
+  margin-left: 1vmin;
+}
+.pie {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.pie_chart {
+  position: relative;
+  float: left;
+  width: 60%;
+  height: 100%;
+}
+.pie_chart_wrapper {
+  width: 100%;
+  height: 100%;
+}
+.pie_shadow path {
+  fill: #000;
+  opacity: 0.15;
+  mix-blend-mode: multiply;
+}
+.pie_light {
+  display: none;
+}
+.pie_light path {
+  fill: #fff;
+  opacity: 0.25;
+  mix-blend-mode: screen;
+}
+.pie_legends {
+  float: left;
+  width: 40%;
+  height: 100%;
+  padding: 2vmin;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.pie_legends_item {
+  position: relative;
+  display: block;
+  white-space: pre;
+  margin-bottom: 0.6vmin;
+  width: 100%;
+}
+.pie_legends_item_count {
+  position: absolute;
+  right: 0;
+}
+.pie_legends_item_color {
+  display: inline-block;
+  width: 1.4vmin;
+  height: 1.4vmin;
+  border-radius: 0.7vmin;
+  margin-right: 0.8vmin;
+}
+.pie_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.pie_count {
+  line-height: 1em;
+  text-align: center;
+}
+.pie_count_value {
+  font-size: 6vmin;
+}
+.pie_count_unit {
+  font-size: 3vmin;
+}
+.pie_count_label {
+  display: block;
+  margin-top: 1vmin;
+}
+.pie_hand_anchor {
+  fill: #000;
+}
+.pie_hand_line {
+  fill: #000;
+}
+.bar-chart_wrapper {
+  width: 100%;
+  height: 100%;
+}
+.bar-chart_axis_legend {
+  font-size: 1.2vmin;
+  fill: #879db7;
+}
+.bar-chart_axis text {
+  font-size: 1.2vmin;
+  fill: #879db7;
+}
+.bar-chart_axis line {
+  fill: none;
+  stroke: #555;
+  shape-rendering: crispEdges;
+}
+.bar-chart_axis path {
+  display: none;
+}
+.bar-chart_axis--y .tick line {
+  stroke: #555;
+  stroke-dasharray: 1 2;
+  stroke-width: 1px;
+}
+.bar-chart_axis--y .tick:first-child line {
+  display: none;
+}
+.github__user-badge .widget__body {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: stretch;
+  align-items: stretch;
+  align-content: stretch;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+.github__user-badge img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.github__user-badge__avatar {
+  height: 90%;
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.github__user-badge__banner {
+  height: 40%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.github__user-badge__count {
+  display: inline-block;
+}
+.github__user-badge__info {
+  flex-shrink: 1;
+}
+.github__user-badge__info__item {
+  width: 50%;
+  float: left;
+  padding: 5px 15px;
+}
+.github__pull-request {
+  position: relative;
+  min-height: 34px;
+  padding: 9px 15px 9px 50px;
+}
+.github__pull-request__avatar {
+  position: absolute;
+  top: 9px;
+  left: 15px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.github__pull-request__avatar img {
+  max-width: 100%;
+}
+.github__pull-requests_gauge_chart {
+  height: 82%;
+}
+.github__pull-requests_gauge_message {
+  height: 18%;
+  text-align: center;
+}
+.github__repository-contributors_stats__item {
+  height: 56px;
+  padding-left: 71px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.github__repository-contributors_stats__item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 56px;
+  height: 56px;
+}
+.github__repository-contributors_stats__item__count {
+  position: absolute;
+  right: 15px;
+}
+.github__issue-labels_donut__total span {
+  display: block;
+}
+.list__item.github__branch {
+  padding-top: 12px;
+  min-height: 40px;
+}
+.github__branch {
+  line-height: 1em;
+}
+.github__branch__avatar {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+  border-radius: 14px;
+  top: 6px;
+  right: 15px;
+}
+.github__branch__avatar img {
+  max-width: 100%;
+}
+.github__status__current {
+  height: 100%;
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: center;
+  justify-content: center;
+  text-align: center;
+}
+.github__status__current__icon {
+  font-size: 8em;
+}
+.github__status__current__icon--ok {
+  color: #4ec2b4;
+}
+.github__status__current__icon--not-ok {
+  color: #de5029;
+}
+.github__top-committer__avatar {
+  height: 75%;
+  text-align: center;
+  padding: 5%;
+}
+.github__top-committer__avatar img {
+  max-height: 100%;
+}
+.github__top-committer__info {
+  text-align: center;
+  height: 25%;
+}
+.time__clock__outer-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: transparent;
+  border: 0.5vmin solid #000;
+  border-radius: 12vmin;
+  width: 24vmin;
+  height: 24vmin;
+  margin-top: -12vmin;
+  margin-left: -12vmin;
+}
+.time__clock__inner-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.2vmin;
+  height: 1.2vmin;
+  border-radius: 0.6vmin;
+  margin-top: -0.6vmin;
+  margin-left: -0.6vmin;
+  background: #000;
+}
+.time__clock__indicator {
+  position: absolute;
+  top: 33%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 3vmin;
+  opacity: 0.4;
+}
+.time__clock__info {
+  position: absolute;
+  top: 63%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.6vmin;
+}
+.time__clock__hand {
+  width: 10.44vmin;
+  height: 2px;
+  margin-top: -1px;
+  background-color: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: left center;
+}
+.time__clock__hand--hours {
+  width: 6.600000000000001vmin;
+}
+.time__clock__hand--seconds {
+  height: 1px;
+}
+.travis__build-history__item--created:before {
+  background-color: #495b71;
+}
+.travis__build-history__item--passed:before {
+  background-color: #4ec2b4;
+}
+.travis__build-history__item--errored:before,
+.travis__build-history__item--failed:before {
+  background-color: #de5029;
+}
+.travis__build-histogram .result--passed {
+  fill: #4ec2b4;
+}
+.travis__build-histogram .result--errored,
+.travis__build-histogram .result--failed {
+  fill: #de5029;
+}
+.travis__repository .widget__header {
+  padding-left: 35px;
+}
+.travis__repository .widget__header:before {
+  content: " ";
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: -5vmin;
+  left: 12px;
+  border: 2px solid #2b3847;
+  border-radius: 100%;
+  background-color: #000;
+}
+.travis__repository--passed .widget__header:before {
+  background-color: #4ec2b4;
+}
+.travis__repository__description {
+  margin: 10px 15px;
+}
+@font-face {
+  font-family: 'Weather';
+  src: url("../fonts/weather.ttf") format('truetype');
+}
+.weather__icon {
+  display: inline-block;
+  font-family: "Weather";
+  display: inline-block;
+  font-style: normal;
+  color: #ddd;
+}
+.weather__icon--clear-sky:before {
+  content: "A";
+}
+.weather__icon--few-clouds:before,
+.weather__icon--scattered-clouds:before {
+  content: "D";
+}
+.weather__icon--broken-clouds:before,
+.weather__icon--overcast-clouds:before {
+  content: "P";
+}
+.weather__icon--light-rain:before,
+.weather__icon--moderate-rain:before {
+  content: "F";
+}
+.weather__icon--light-snow:before,
+.weather__icon--snow:before,
+.weather__icon--heavy-snow:before,
+.weather__icon--sleet:before,
+.weather__icon--shower-sleet:before,
+.weather__icon--light-rain-and-snow:before,
+.weather__icon--rain-and-snow:before,
+.weather__icon--light-shower-snow:before,
+.weather__icon--shower-snow:before,
+.weather__icon--heavy-shower-snow:before {
+  content: "W";
+}
+.weather__icon--heavy-intensity-rain:before,
+.weather__icon--very-heavy-rain:before,
+.weather__icon--extreme-rain:before,
+.weather__icon--freezing-rain:before,
+.weather__icon--light-intensity-shower-rain:before,
+.weather__icon--shower-rain:before,
+.weather__icon--heavy-intensity-shower-rain:before,
+.weather__icon--ragged-shower-rain:before {
+  content: "X";
+}
+.weather__weather .widget__body {
+  padding: 15px 15px 15px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.weather__weather__current {
+  margin-right: 30px;
+  align-self: flex-start;
+  white-space: nowrap;
+}
+.weather__weather__current .weather__icon {
+  font-size: 52px;
+  height: 60px;
+  line-height: 60px;
+  margin-right: 10px;
+}
+.weather__weather__temp__value {
+  font-size: 52px;
+  line-height: 52px;
+  vertical-align: top;
+  display: inline-block;
+}
+.weather__weather__temp__unit {
+  font-size: 18px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 3px;
+  vertical-align: top;
+}
+.weather__weather__description {
+  margin-top: 7px;
+}
+.weather__weather__forecast {
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 120px;
+}
+.weather__weather__forecast__item {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 15px;
+}
+.weather__weather__forecast__item:first-child {
+  margin-left: 0;
+}
+.weather__weather__forecast__item .weather__icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.weather__weather__forecast__item__min-max {
+  align-self: flex-end;
+}
+.weather__weather__forecast__item__min,
+.weather__weather__forecast__item__max {
+  display: block;
+  width: 50%;
+  font-size: 14px;
+  float: left;
+  line-height: 16px;
+}
+.weather__weather__forecast__item__min {
+  padding-right: 3px;
+}
+.weather__weather__forecast__item__max {
+  padding-left: 3px;
+}
+.weather__weather__forecast__item__description {
+  font-size: 14px;
+  display: block;
+  width: 100%;
+  margin-bottom: 9px;
+}
+.widget__header {
+  text-transform: uppercase;
+}
+.widget__header__subject {
+  color: #f6ecd0;
+}
+.list__item {
+  border-bottom: 1px solid #212b37;
+}
+.list__item__time {
+  color: #879db7;
+}
+.time__clock {
+  box-shadow: 0 1px 0 #495b71 inset;
+}
+.time__clock__outer-circle {
+  border: 0.8vmin solid #495b71;
+  background-color: #1e2430;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+.time__clock__inner-circle,
+.time__clock__hand {
+  background-color: #e0c671;
+  box-shadow: 0 0 3px rgba(0,0,0,0.5);
+}
+.time__clock__brand {
+  color: #495b71;
+}
