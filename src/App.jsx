@@ -4,6 +4,7 @@ import githubComponents  from 'mozaik-ext-github';
 import travisComponents  from 'mozaik-ext-travis';
 import timeComponents    from 'mozaik-ext-time';
 import weatherComponents from 'mozaik-ext-weather';
+import jenkinsComponents from 'mozaik-ext-jenkins';
 
 
 const MozaikComponent = Mozaik.Component.Mozaik;
@@ -14,6 +15,7 @@ Mozaik.Registry.addExtensions({
     github:  githubComponents,
     travis:  travisComponents,
     time:    timeComponents,
+    jenkins: jenkinsComponents,
     weather: weatherComponents
 });
 
