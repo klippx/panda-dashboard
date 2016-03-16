@@ -17,6 +17,9 @@ var config = {
 
     // clients configs
     api: {
+        weather: {
+          token: '5382d946f938337e8eb3624fb2c80b83'
+        },
         aws: {
             region: 'eu-west-1'
         },
