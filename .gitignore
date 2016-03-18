@@ -3,3 +3,4 @@ build
 .env
 .idea
 npm-debug.log
+klarna_ca.crt
