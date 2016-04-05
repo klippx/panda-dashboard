@@ -34,33 +34,30 @@ var config = {
       rows:  3,
       widgets: [
         {
-          type: 'jenkins.job_builds',
-          job: 'klear-dev-test',
+          title: 'Klear production deploy',
+          type: 'jenkins.job_status',
+          job: 'klear-deploy-production',
           columns: 1, rows: 1,
           x: 0, y: 0
         },
         {
-          type: 'github.repository_contributors_stats',
-          repository: 'klippx/exercism',
-          columns: 1, rows: 1,
-          x: 2, y: 0
-        },
-        {
-          type: 'travis.repository',
-          owner: 'plouc',
-          repository: 'mozaik',
+          title: 'Klear dev test',
+          type: 'jenkins.job_builds_histogram',
+          job: 'klear-dev-test',
           columns: 1, rows: 1,
           x: 1, y: 0
         },
         {
-          type: 'travis.build_histogram',
-          owner: 'plouc',
-          repository: 'mozaik',
-          columns: 2, rows: 1,
-          x: 1, y: 1
+          title: 'Eris production deploy',
+          type: 'jenkins.job_status',
+          job: 'eris-deploy-production',
+          columns: 1, rows: 1,
+          x: 2, y: 0
         },
         {
-          type: 'time.clock',
+          title: 'Eris dev test',
+          type: 'jenkins.job_builds_histogram',
+          job: 'eris-dev-test',
           columns: 1, rows: 1,
           x: 3, y: 0
         },
@@ -69,29 +66,15 @@ var config = {
           city: 'Stockholm',
           country: 'SE',
           lang: 'en',
-          limit: 2,
-          columns: 1, rows: 1,
-          x: 0, y: 1
-        },
-        {
-          type: 'travis.build_history',
-          owner: 'plouc',
-          repository: 'mozaik',
-          columns: 1, rows: 2,
-          x: 3, y: 1
-        },
-        {
-          type: 'travis.build_histogram',
-          owner: 'plouc',
-          repository: 'go-gitlab-client',
-          columns: 2, rows: 1,
-          x: 1, y: 2
-        },
-        {
-          type: 'github.status',
+          limit: 3,
           columns: 1, rows: 1,
           x: 0, y: 2
-        }
+        },
+        {
+          type: 'time.clock',
+          columns: 1, rows: 1,
+          x: 3, y: 2
+        },
       ]
     },
 
