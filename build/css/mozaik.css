@@ -398,143 +398,6 @@ h6 {
 .aws__stack {
   padding: 9px 15px;
 }
-.github__user-badge .widget__body {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-align-items: stretch;
-  align-items: stretch;
-  align-content: stretch;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
-.github__user-badge img {
-  max-width: 100%;
-  max-height: 100%;
-}
-.github__user-badge__avatar {
-  height: 90%;
-  display: block;
-  overflow: hidden;
-  border-radius: 50%;
-}
-.github__user-badge__banner {
-  height: 40%;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
-.github__user-badge__count {
-  display: inline-block;
-}
-.github__user-badge__info {
-  flex-shrink: 1;
-}
-.github__user-badge__info__item {
-  width: 50%;
-  float: left;
-  padding: 5px 15px;
-}
-.github__pull-request {
-  position: relative;
-  min-height: 34px;
-  padding: 9px 15px 9px 50px;
-}
-.github__pull-request__avatar {
-  position: absolute;
-  top: 9px;
-  left: 15px;
-  display: block;
-  width: 24px;
-  height: 24px;
-  border-radius: 100%;
-  overflow: hidden;
-}
-.github__pull-request__avatar img {
-  max-width: 100%;
-}
-.github__pull-requests_gauge_chart {
-  height: 82%;
-}
-.github__pull-requests_gauge_message {
-  height: 18%;
-  text-align: center;
-}
-.github__repository-contributors_stats__item {
-  height: 56px;
-  padding-left: 71px;
-  padding-top: 7px;
-  padding-bottom: 7px;
-}
-.github__repository-contributors_stats__item img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 56px;
-  height: 56px;
-}
-.github__repository-contributors_stats__item__count {
-  position: absolute;
-  right: 15px;
-}
-.github__issue-labels_donut__total span {
-  display: block;
-}
-.list__item.github__branch {
-  padding-top: 12px;
-  min-height: 40px;
-}
-.github__branch {
-  line-height: 1em;
-}
-.github__branch__avatar {
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  overflow: hidden;
-  border-radius: 14px;
-  top: 6px;
-  right: 15px;
-}
-.github__branch__avatar img {
-  max-width: 100%;
-}
-.github__status__current {
-  height: 100%;
-  width: 100%;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  -webkit-justify-content: center;
-  justify-content: center;
-  text-align: center;
-}
-.github__status__current__icon {
-  font-size: 8em;
-}
-.github__status__current__icon--ok {
-  color: #4ec2b4;
-}
-.github__status__current__icon--not-ok {
-  color: #de5029;
-}
-.github__top-committer__avatar {
-  height: 75%;
-  text-align: center;
-  padding: 5%;
-}
-.github__top-committer__avatar img {
-  max-height: 100%;
-}
-.github__top-committer__info {
-  text-align: center;
-  height: 25%;
-}
 .jenkins__view__job__build__status {
   font-size: 1.6em;
 }
@@ -547,28 +410,33 @@ h6 {
 .jenkins__view__job__build__status--failure {
   color: #de5029;
 }
-.jenkins__job-build_durations__bar {
+.jenkins__view__job__build__colored_status {
+  font-size: 1.6em;
+}
+.jenkins__view__job__build__colored_status--success {
+  background-color: #4ec2b4;
+}
+.jenkins__view__job__build__colored_status--unknown {
+  background-color: #495b71;
+}
+.jenkins__view__job__build__colored_status--failure {
+  background-color: #de5029;
+}
+.jenkins__job-builds_histogram .result--unknown {
   fill: #495b71;
 }
-.jenkins__job-build_durations__bar--success {
+.jenkins__job-builds_histogram .result--aborted {
+  fill: #495b71;
+}
+.jenkins__job-builds_histogram .result--success {
   fill: #4ec2b4;
 }
-.jenkins__job-build_durations__bar--failure {
+.jenkins__job-builds_histogram .result--failure {
   fill: #de5029;
 }
-.jenkins__job-build_durations__bar-bg {
-  fill: #384a5d;
-}
-.jenkins__job-build_durations__axis .domain {
-  fill: transparent;
-}
-.jenkins__job-build_durations__axis text {
-  fill: #879db7;
-  font-size: 12px;
-}
 .jenkins__job {
-  padding: 7px 15px 7px 35px;
   position: relative;
+  padding: 7px 15px 7px 35px;
 }
 .jenkins__job:before {
   content: " ";
@@ -629,6 +497,15 @@ h6 {
   padding: 0 15px;
   font-size: 13px;
   color: #deb94f;
+}
+.widget__body__colored {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.widget__body__colored .jenkins__job-status__current {
+  margin: auto;
 }
 .jenkins__view__job__build__status {
   font-size: 1.6em;
@@ -951,44 +828,6 @@ h6 {
 }
 .time__clock__hand--seconds {
   height: 1px;
-}
-.travis__build-history__item--created:before {
-  background-color: #495b71;
-}
-.travis__build-history__item--passed:before {
-  background-color: #4ec2b4;
-}
-.travis__build-history__item--errored:before,
-.travis__build-history__item--failed:before {
-  background-color: #de5029;
-}
-.travis__build-histogram .result--passed {
-  fill: #4ec2b4;
-}
-.travis__build-histogram .result--errored,
-.travis__build-histogram .result--failed {
-  fill: #de5029;
-}
-.travis__repository .widget__header {
-  padding-left: 35px;
-}
-.travis__repository .widget__header:before {
-  content: " ";
-  display: block;
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  top: -5vmin;
-  left: 12px;
-  border: 2px solid #2b3847;
-  border-radius: 100%;
-  background-color: #000;
-}
-.travis__repository--passed .widget__header:before {
-  background-color: #4ec2b4;
-}
-.travis__repository__description {
-  margin: 10px 15px;
 }
 @font-face {
   font-family: 'Weather';
